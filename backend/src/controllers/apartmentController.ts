@@ -12,7 +12,7 @@ const getAllApartment = async (req: Request, res: Response) => {
       developer?: string;
     };
 
-    let filter: any = {
+    let filter: Record<string,unknown> = {
       ...(project && { project }),
       ...(developer && { developer }),
     };
@@ -25,7 +25,6 @@ const getAllApartment = async (req: Request, res: Response) => {
       ];
     }
     const apartments = await Apartment.find(filter).skip(skip).limit(limit);
-    console.log("apartments count:", apartments.length, apartments);
     const total = await Apartment.countDocuments(filter);
     res.status(200).json({
       data: apartments,
@@ -41,7 +40,6 @@ const getAllApartment = async (req: Request, res: Response) => {
 
 const getApartmentById = async (req: Request, res: Response) => {
   try {
-    console.log(req.params.id, "id");
     const apartmentById = await Apartment.findById(req.params.id);
 
     if (!apartmentById) {
