@@ -1,5 +1,6 @@
 import { getApartmentById, getSimilarApartments } from "@/app/lib/api";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function ApartmentDetails({
   params,
@@ -8,7 +9,12 @@ export default async function ApartmentDetails({
 }) {
   const { id } = await params;
   const { data:apartment } = await getApartmentById(id);
+
+  if(!apartment){
+    notFound()
+  }
   const { data: similarApartments } = await getSimilarApartments(apartment.project);
+  
 
   return (
     <div className="max-w-6xl mx-auto px-8 py-8">

@@ -24,10 +24,6 @@ export default function Navbar() {
   </div>
 
   <div className="w-20" >
-     {/* <input 
-      placeholder="Search apartments..." 
-      className="border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-green-500 w-64"
-    /> */}
      </div>
 </nav>
   )
