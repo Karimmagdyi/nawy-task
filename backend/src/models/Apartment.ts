@@ -24,7 +24,15 @@ const ApartmentSchema: Schema = new Schema(
     bedrooms: { type: Number, required: true },
     bathrooms: { type: Number, required: true },
     area: { type: Number, required: true },
-    images: [{ type: String }],
+    images: [
+      {
+        type: String,
+        validate: {
+          validator: (v: string) => /^https?:\/\/.+/.test(v),
+          message: "Invalid image URL",
+        },
+      },
+    ],
   },
   { timestamps: true },
 );

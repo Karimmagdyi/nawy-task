@@ -18,12 +18,14 @@ const getAllApartment = async (req: Request, res: Response) => {
     };
 
     if (search) {
-      filter.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { unitNumber: { $regex: search, $options: "i" } },
-        { project: { $regex: search, $options: "i" } },
-      ];
-    }
+  filter.$and = [{
+    $or: [
+      { name: { $regex: search, $options: "i" } },
+      { unitNumber: { $regex: search, $options: "i" } },
+      { project: { $regex: search, $options: "i" } },
+    ]
+  }];
+}
     const apartments = await Apartment.find(filter).skip(skip).limit(limit);
     const total = await Apartment.countDocuments(filter);
     res.status(200).json({
