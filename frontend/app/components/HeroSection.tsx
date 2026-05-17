@@ -43,7 +43,7 @@ export default function HeroSection() {
                 className="w-full bg-transparent text-gray-800 outline-none placeholder:text-gray-400"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={(e)=>{if(e.key=='Enter') handleSearch}}
+                onKeyDown={(e)=>{if(e.key=='Enter') handleSearch()}}
               />
             </div>
 
