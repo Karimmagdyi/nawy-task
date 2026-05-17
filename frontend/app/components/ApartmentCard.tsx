@@ -14,7 +14,7 @@ export default function ApartmentCard({ name, price, bedrooms, bathrooms, area, 
   return (
     <div className="rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer">
   <div className="relative">
-    <img src={images[0]} alt={name} className="w-full h-56 object-cover" />
+    <img src={images?.[0]} alt={name} className="w-full h-56 object-cover" />
     <span className="absolute top-3 left-3 bg-white text-xs font-semibold px-2 py-1 rounded-full text-gray-700">
       {project}
     </span>

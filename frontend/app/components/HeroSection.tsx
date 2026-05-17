@@ -11,7 +11,7 @@ export default function HeroSection() {
       return;
     }
 
-    router.push(`/?search=${encodeURIComponent(search)}`);
+    router.replace(`/?search=${encodeURIComponent(search)}`);
   };
   const handleClearSearch = () => {
     setSearch("");
@@ -43,6 +43,7 @@ export default function HeroSection() {
                 className="w-full bg-transparent text-gray-800 outline-none placeholder:text-gray-400"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e)=>{if(e.key=='enter') handleSearch}}
               />
             </div>
 

@@ -28,7 +28,7 @@ export default async function ApartmentDetails({
 
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-3xl shadow-lg mb-5">
         <img
-          src={apartment.images[0]}
+          src={apartment.images?.[0]}
           alt={apartment.name}
           className="w-full h-full object-cover hover:scale-105 transition duration-500"
         />
@@ -110,7 +110,8 @@ export default async function ApartmentDetails({
                   <div className="rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                     <div className="aspect-[4/3] overflow-hidden">
                       <img
-                        src={apt.images[0]}
+                        src={apt.images?.[0]}
+                        alt={apt.name}
                         className="w-full h-full object-cover"
                       />
                     </div>

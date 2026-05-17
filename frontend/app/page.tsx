@@ -10,10 +10,13 @@ export default async function Home({
 }: {
   searchParams: Promise<{ search?: string; page?: string }>;
 }) {
+  const { search, page } = await searchParams; 
+
   const apartments = await getApartments(
-    (await searchParams).search,
-    Number((await searchParams).page) || 1,
+    search,
+    Number(page) || 1,
   );
+
   return (
     <>
       <Navbar />
@@ -30,7 +33,7 @@ export default async function Home({
         <Pagination
           currentPage={apartments.currentPage}
           totalPages={apartments.totalPages}
-          search={(await searchParams).search}
+          search={search}
         />
       </main>
     </>
